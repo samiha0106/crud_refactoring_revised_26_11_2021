@@ -17,6 +17,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/', function () {
+    App\Student::create(['first_name' => request('first_name')]);
+    return redirect()->back();  
+});
  Route::post('/students','StudentController@store');
  Route::get('/students','StudentController@show');
  Route::get('/students/{id}','StudentController@showId');
